@@ -4,10 +4,11 @@
 /* Generic exception class
  * It is conditionally declared to avoid conflicting with the one declared in the php OAuth extension.
  */
-if(!class_exists('OAuthException',false)) {
-    class OAuthException extends Exception {
-      // pass
-    }
+
+if (!class_exists('OAuthException')) {
+  class OAuthException extends Exception {
+    // pass
+  }
 }
 
 class OAuthConsumer {
@@ -873,5 +874,3 @@ class OAuthUtil {
     return implode('&', $pairs);
   }
 }
-
-?>
