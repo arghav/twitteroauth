@@ -163,6 +163,17 @@ class TwitterOAuth {
   }
 
   /**
+   * PUT wrapper for oAuthRequest.
+   */
+  function put($url, $parameters = array(), $files = array()) {
+    $response = $this->oAuthRequest($url, 'PUT', $parameters, $files);
+    if ($this->format === 'json' && $this->decode_json) {
+      return json_decode($response);
+    }
+    return $response;
+  }
+
+  /**
    * DELETE wrapper for oAuthReqeust.
    */
   function delete($url, $parameters = array()) {
@@ -218,7 +229,9 @@ class TwitterOAuth {
 
     switch ($method) {
       case 'POST':
-        curl_setopt($ci, CURLOPT_POST, TRUE);
+      case 'PUT':
+        $methodOption = ($method == 'POST') ? CURLOPT_POST: CURLOPT_PUT;
+        curl_setopt($ci, $methodOption, TRUE);
         if (!empty($files)) {
           foreach ($files as $k => $v) {
               if (0 !== strpos($v, '@'))
