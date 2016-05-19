@@ -1,0 +1,9 @@
+/.* export-ignore
+/callback.php export-ignore
+/clearsessions.php export-ignore
+/config-sample.php export-ignore
+/connect.php export-ignore
+/html.inc export-ignore
+/index.php export-ignore
+/redirect.php export-ignore
+/test.php export-ignore
